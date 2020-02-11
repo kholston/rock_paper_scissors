@@ -17,7 +17,83 @@ function computerPlay()
     return choices[Math.floor(Math.random() * choices.length)]
 }
 
+function playRound(playerSelection, computerSelection)
+{
+  if(typeof playerSelection != "string")
+    return "Please enter string";
 
+    let result = " ";
+
+    if(playerSelection.toUpperCase() == "ROCK")
+    {
+        switch(computerSelection)
+        {
+            case "Rock":
+                result = "You Tied."
+            break;
+
+            case "Paper":
+                result = "You lose! Paper beats Rock."
+            break;
+
+            case "Scissors":
+                        "You win! Rock beats Scissors"
+            break;
+
+            default:
+            return "Something has gone wrong"
+        }
+    }
+
+    else if(playerSelection.toUpperCase() == "PAPER")
+    {
+        switch(computerSelection)
+        {
+            case "Rock":
+                result = "You Win. Paper beats Rock"
+            break;
+
+            case "Paper":
+                result = "You Tied"
+            break;
+
+            case "Scissors":
+                        "You Lose! Scissors beats Paper"
+            break;
+
+            default:
+            return "Something has gone wrong"
+        }
+    }
+
+    else if(playerSelection.toUpperCase() == "SCISSORS")
+    {
+        switch(computerSelection)
+        {
+            case "Rock":
+                result = "You Lose! Rock beats Paper."
+            break;
+
+            case "Paper":
+                result = "You Win! Scissors beats Paper."
+            break;
+
+            case "Scissors":
+                        "You Tied"
+            break;
+
+            default:
+            return "Something has gone wrong"
+        } 
+    }
+
+    else
+    {
+        return "Please enter a valid choice."
+    }
+
+    return result;
+}
 
 </script>
 
