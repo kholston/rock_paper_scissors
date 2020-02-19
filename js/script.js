@@ -86,29 +86,24 @@ function playRound(playerSelection, computerSelection)
 }
 
 
-rBtn = document.createElement("button");
-rBtn.innerText = "Rock";
-document.body.appendChild(rBtn);
+//Connects buttons to variables
+rBtn = document.getElementById("rock");
+pBtn = document.getElementById("paper");
+pBtn = document.getElementById("paper");
 
+//Plays a round when the button is clicked
 rBtn.addEventListener("click",function(){
     playRound(rBtn.innerText,computerPlay());
 });
-
-pBtn = document.createElement("button");
-pBtn.innerText = "Paper";
-document.body.appendChild(pBtn);
 
 pBtn.addEventListener("click",function(){
     playRound(pBtn.innerText,computerPlay());
 });
 
-sBtn = document.createElement("button");
-sBtn.innerText = "Scissors";
-document.body.appendChild(sBtn);
-
 sBtn.addEventListener("click",function(){
     playRound(sBtn.innerText,computerPlay());
 });
+
 
 
 
