@@ -1,3 +1,4 @@
+//Gets random choice for computer
 function computerPlay()
 {
     let choices = ["Rock", "Paper", "Scissors"]
@@ -5,13 +6,11 @@ function computerPlay()
     return choices[Math.floor(Math.random() * choices.length)]
 }
 
+
 function playRound(playerSelection, computerSelection)
 {
+    
   let result;
-  
-  if(typeof playerSelection != "string")
-    playerSelection = prompt("Please enter valid choice");
-  
   if(playerSelection == null)
   {
        return;
@@ -23,19 +22,19 @@ function playRound(playerSelection, computerSelection)
         switch(computerSelection)
         {
             case "Rock":
-                return result = "You Tied."
+                result = "You Tied."
             break;
 
             case "Paper":
-                return result = "You lose! Paper beats Rock."
+                result = "You lose! Paper beats Rock."
             break;
 
             case "Scissors":
-                   return result = "You win! Rock beats Scissors"
+                result = "You win! Rock beats Scissors"
             break;
 
             default:
-            return result = "Something has gone wrong"
+                result = "Something has gone wrong"
         }
     }
 
@@ -44,19 +43,19 @@ function playRound(playerSelection, computerSelection)
         switch(computerSelection)
         {
             case "Rock":
-                return result = "You Win. Paper beats Rock"
+                result = "You Win. Paper beats Rock"
             break;
 
             case "Paper":
-                return result = "You Tied"
+                result = "You Tied"
             break;
 
             case "Scissors":
-                  return result = "You Lose! Scissors beats Paper"
+                result = "You Lose! Scissors beats Paper"
             break;
 
             default:
-            return result = "Something has gone wrong"
+                result = "Something has gone wrong"
         }
     }
 
@@ -65,66 +64,51 @@ function playRound(playerSelection, computerSelection)
         switch(computerSelection)
         {
             case "Rock":
-                return result = "You Lose! Rock beats Paper."
+                result = "You Lose! Rock beats Paper."
             break;
 
             case "Paper":
-                return result = "You Win! Scissors beats Paper."
+                result = "You Win! Scissors beats Paper."
             break;
 
             case "Scissors":
-                return result = "You Tied"
+                result = "You Tied"
             break;
 
             default:
-                return result = "Something has gone wrong"
+                result = "Something has gone wrong"
         } 
     }
 
-    else
-    {
-        playerSelection = prompt("Please enter a valid choice.")
-        console.log(playerSelection);
-        console.log(playRound(playerSelection,computerSelection));
-        
-    }
-
+ 
+    console.log(result);
     return result;
 }
 
-function outputResult(result)
-{
-    console.log(result)
-    alert(result)
-}
 
-function game()
-{
-    let result;
+rBtn = document.createElement("button");
+rBtn.innerText = "Rock";
+document.body.appendChild(rBtn);
 
-    alert("Welcome to Rock, Paper, Scissors. Click to continue . . .")
+rBtn.addEventListener("click",function(){
+    playRound(rBtn.innerText,computerPlay());
+});
 
-    playerinput = prompt("Round 1: Rock,Paper, Scissors")
-    result = playRound(playerinput, computerPlay())
-    outputResult(result)
-    
+pBtn = document.createElement("button");
+pBtn.innerText = "Paper";
+document.body.appendChild(pBtn);
 
-    playerinput = prompt("Round 2: Rock,Paper, Scissors")
-    result = playRound(playerinput, computerPlay())
-    outputResult(result)
+pBtn.addEventListener("click",function(){
+    playRound(pBtn.innerText,computerPlay());
+});
 
-    playerinput = prompt("Round 3: Rock,Paper, Scissors")
-    result = playRound(playerinput, computerPlay())
-    outputResult(result)
+sBtn = document.createElement("button");
+sBtn.innerText = "Scissors";
+document.body.appendChild(sBtn);
 
-    playerinput = prompt("Round 4: Rock,Paper, Scissors")
-    result = playRound(playerinput, computerPlay())
-    outputResult(result)
+sBtn.addEventListener("click",function(){
+    playRound(sBtn.innerText,computerPlay());
+});
 
-    playerinput = prompt("Round 5: Rock,Paper, Scissors")
-    result = playRound(playerinput, computerPlay())
-    outputResult(result)
 
-    console.log("Game Over.")
-    alert("Game Over")
-}
+
