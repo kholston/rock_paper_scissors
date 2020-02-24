@@ -1,4 +1,22 @@
 //Gets random choice for computer
+
+
+let wins = 0;
+let ties = 0;
+let cpuWins = 0;
+let round = 1;
+
+//Connects buttons to variables
+rBtn = document.getElementById("rock");
+pBtn = document.getElementById("paper");
+sBtn = document.getElementById("scissors");
+
+pWinResult = document.getElementById("pWins");
+cWinResult = document.getElementById("cWins");
+tieResult = document.getElementById("ties");
+roundNum = document.getElementById("roundNumber");
+
+
 function computerPlay()
 {
     let choices = ["Rock", "Paper", "Scissors"]
@@ -6,10 +24,33 @@ function computerPlay()
     return choices[Math.floor(Math.random() * choices.length)]
 }
 
+function resetResults()
+{
+    wins = 0;
+    ties = 0;
+    cpuWins = 0;
+    round = 0;
+}
+
+function setResults()
+{
+    pWinResult.innerText = "Player Wins \n" + wins;
+    cWinResult.innerText = "Computer Wins \n" + cpuWins;
+    tieResult.innerText = "Ties \n" + ties;
+    roundNum.innerText = "Round " + round;
+}
+
+
+
 
 function playRound(playerSelection, computerSelection)
 {
-    
+    if(wins == 5 || cpuWins ==5)
+    {
+        resetResults();
+    }
+    setResults();
+   
   let result;
   if(playerSelection == null)
   {
@@ -22,15 +63,18 @@ function playRound(playerSelection, computerSelection)
         switch(computerSelection)
         {
             case "Rock":
-                result = "You Tied."
+                result = "Computer chose Rock.\n You Tied."
+                ties++;
             break;
 
             case "Paper":
-                result = "You lose! Paper beats Rock."
+                result = "Computer chose Paper.\n You lose! Paper beats Rock."
+                cpuWins++;
             break;
 
             case "Scissors":
-                result = "You win! Rock beats Scissors"
+                result = "Computer chose Scissors.\nYou win! Rock beats Scissors"
+                wins++;
             break;
 
             default:
@@ -43,15 +87,18 @@ function playRound(playerSelection, computerSelection)
         switch(computerSelection)
         {
             case "Rock":
-                result = "You Win. Paper beats Rock"
+                result = "Computer chose Rock.\n You Win. Paper beats Rock"
+                wins++;
             break;
 
             case "Paper":
-                result = "You Tied"
+                result = "Computer chose Paper.\n You Tied"
+                ties++;
             break;
 
             case "Scissors":
-                result = "You Lose! Scissors beats Paper"
+                result = "Computer chose Scissors.\n You Lose! Scissors beats Paper"
+                cpuWins++;
             break;
 
             default:
@@ -64,15 +111,18 @@ function playRound(playerSelection, computerSelection)
         switch(computerSelection)
         {
             case "Rock":
-                result = "You Lose! Rock beats Paper."
+                result = "Computer chose Rock.\n You Lose! Rock beats Paper."
+                cpuWins++;
             break;
 
             case "Paper":
-                result = "You Win! Scissors beats Paper."
+                result = "Computer chose Paper.\n You Win! Scissors beats Paper."
+                wins++;
             break;
 
             case "Scissors":
-                result = "You Tied"
+                result = "Computer chose Scissors.\n You Tied"
+                ties++;
             break;
 
             default:
@@ -80,16 +130,29 @@ function playRound(playerSelection, computerSelection)
         } 
     }
 
+    
  
     console.log(result);
-    return result;
+    statementBox = document.getElementById("resultStatement");
+    statementBox.innerText = result;
+
+    if(wins == 5)
+    {
+        statementBox.innerText = "You Win!\n Click a button to start a new game.\n First to 5 Wins"  
+    }
+
+    if(cpuWins == 5)
+    {
+        statementBox.innerText = "You Lose.\n Click a button to start a new game.\n First to 5 Wins" 
+    }
+
+    
+    round++; 
+    setResults();   
 }
 
 
-//Connects buttons to variables
-rBtn = document.getElementById("rock");
-pBtn = document.getElementById("paper");
-pBtn = document.getElementById("paper");
+
 
 //Plays a round when the button is clicked
 rBtn.addEventListener("click",function(){
